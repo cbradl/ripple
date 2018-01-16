@@ -13,17 +13,12 @@ led_y = center_y
 
 count = 0
 
-unicornhathd.set_pixel_hsv(original_pixel_x, original_pixel_y + .5, 0, .7, 1)
+unicornhathd.set_pixel_hsv(led_x, led_y + .5, 0, .7, 1)
 unicornhathd.show()
 
 for theta in range(0, 628):
-<<<<<<< HEAD
-    pixel_x = center_x+(r*math.cos(theta/100.))
-    pixel_y = center_y+(r*math.sin(theta/100.))
-=======
     logic_x = center_x + (r * math.cos(theta / 100))
     logic_y = center_y + (r * math.sin(theta / 100))
->>>>>>> 7a834a68d9eebb9d6209da5e88bc726ddf3e47f7
 
     if abs(logic_x - led_x) > 1:
         print(str(led_x) + ", " + str(led_y))
