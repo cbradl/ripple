@@ -48,12 +48,14 @@ blue = .666
 x = 1
 y = 1
 
+single_ripple(15, x + .5, y + .5, blue)
+single_ripple(15, 14 + .5, 14 + .5, blue)
 
-while True:
-    last_time = time.time()+.11
-    if last_time + .1 < time.time():
+'''while x < 14:
+    last_time = time.time()+4.11
+    if last_time + 4 < time.time():
         single_ripple(random.randrange(5, 16), x + .5, y + .5, blue)
         last_time = time.time()
         x += 2
-        y += 2
+        y += 2'''
 
