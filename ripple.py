@@ -20,9 +20,9 @@ class Ripple:
         if 0 < led_x < 16 and 0 < led_y < 16:
             unicornhathd.set_pixel_hsv(led_x, led_y + .5, hue, sat, b)
 
-        for theta in range(0, 628):
-            logic_x = center_x + (r * math.cos(theta / 100))
-            logic_y = center_y + (r * math.sin(theta / 100))
+        for theta in range(0, 314):
+            logic_x = center_x + (r * math.cos(theta / 50))
+            logic_y = center_y + (r * math.sin(theta / 50))
 
             if abs(logic_x - led_x) > 1:
                 print(str(led_x) + ", " + str(led_y))
@@ -45,11 +45,16 @@ class Ripple:
         self.radius += 1
 
 
-rip_array = []
+rip_array = [0,0,0,0,0]
+last_time = time.time()-4
+i = 0
 
-for i in range(0, 30):
-    if i % 5:
-        rip_array.append(Ripple(random.randrange(0, 16), random.randrange(0, 16)))
-    for x in rip_array:
-        rip_array[x].move_ripple()
+while True:
+    if last_time + 1 < time.time():
+        rip_array[i%5] = Ripple(random.randrange(0, 16), random.randrange(0, 16))
+        i += 1
+        last_time = time.time()
+    for x in range(len(rip_array)):
+        if type(rip_array[x]) != int:
+            rip_array[x].move_ripple()
     unicornhathd.show()
