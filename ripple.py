@@ -1,14 +1,13 @@
 import math
 import unicornhathd
 import time
-
+import random
 #bloop
 
 
 def circle(r, center_x, center_y, b, hue):
     sat = 0.7
-    count = 0
-    
+
     led_x = center_x + r
     led_y = center_y
     if 0 < led_x < 16 and 0 < led_y < 16:
@@ -23,33 +22,38 @@ def circle(r, center_x, center_y, b, hue):
             if 0 < led_x < 16 and 0 < led_y < 16:
                 unicornhathd.set_pixel_hsv(led_x, led_y, hue, sat, b)
             led_x = int(round(logic_x))
-            count = 0
 
         elif abs(logic_y - led_y) > 1:
             print(str(led_x) + ", " + str(led_y))
             if 0 < led_x < 16 and 0 < led_y < 16:
                 unicornhathd.set_pixel_hsv(led_x, led_y, hue, sat, b)
             led_y = int(round(logic_y))
-            count = 0
-
-        count += 1
 
 
 def single_ripple(radius, x, y, color):
-    for r in range(1, radius):
-        circle(r, x, y, 1, color)
-        circle(r - 1, x, y, .5, color)
-        unicornhathd.show()
-        time.sleep(.1)
-        circle(r - 1, x, y, 0, color)
+    r = 1
+    last_time = time.time()+.11
+    while r < radius:
+        if last_time + .1 < time.time():
+            circle(r, x, y, 1, color)
+            circle(r - 1, x, y, .5, color)
+            unicornhathd.show()
+            circle(r - 1, x, y, 0, color)
+            r += 1
+            last_time = time.time()
+
 
 
 blue = .666
-
-single_ripple(8, 7.5, 7.5, blue)
-single_ripple(5, 3.5, 3.5, blue)
-single_ripple(15, 12.5, 3.5, blue)
+x = 1
+y = 1
 
 
-#oooop
-#branch_test
+while True:
+    last_time = time.time()+.11
+    if last_time + .1 < time.time():
+        single_ripple(random.randrange(5, 16), x + .5, y + .5, blue)
+        last_time = time.time()
+        x += 2
+        y += 2
+
