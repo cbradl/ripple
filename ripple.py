@@ -4,6 +4,7 @@ import time
 
 #bloop
 
+
 def circle(r, center_x, center_y, b, hue):
     sat = 0.7
     count = 0
@@ -33,27 +34,21 @@ def circle(r, center_x, center_y, b, hue):
 
         count += 1
 
-for r in range(1,15):
-    circle(r, 7.5, 7.5, 1, .666)
-    circle(r-1, 7.5, 7.5, .5, .666)
-    unicornhathd.show()
-    time.sleep(.1)
-    circle(r-1, 7.5, 7.5, 0, .666)
 
-for r in range(1,20):
-    circle(r, 3.5, 3.5, 1, .666)
-    circle(r-1, 3.5, 3.5, .5, .666)
-    unicornhathd.show()
-    time.sleep(.1)
-    circle(r-1, 3.5, 3.5, 0, .666)
+def single_ripple(radius, x, y, color):
+    for r in range(1, radius):
+        circle(r, x, y, 1, color)
+        circle(r - 1, x, y, .5, color)
+        unicornhathd.show()
+        time.sleep(.1)
+        circle(r - 1, x, y, 0, color)
 
-for r in range(1,20):
-    circle(r, 11.5, 3.5, 1, .666)
-    circle(r-1, 11.5, 3.5, .5, .666)
-    unicornhathd.show()
-    time.sleep(.1)
-    circle(r-1, 11.5, 3.5, 0, .666)
 
+blue = .666
+
+single_ripple_circle(8, 7.5, 7.5, blue)
+single_ripple_circle(5, 3.5, 3.5, blue)
+single_ripple_circle(15, 12.5, 3.5, blue)
 
 
 #oooop
