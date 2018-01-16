@@ -45,27 +45,11 @@ class Ripple:
         self.radius += 1
 
 
-first = Ripple(2, 2)
-second = Ripple(13, 13)
+rip_array = []
 
 for i in range(0, 30):
-    first.move_ripple()
-    second.move_ripple()
+    if i % 5:
+        rip_array.append(Ripple(random.randrange(0, 16), random.randrange(0, 16)))
+    for x in rip_array:
+        rip_array[x].move_ripple()
     unicornhathd.show()
-
-'''
-blue = .666
-x = 1
-y = 1
-
-single_ripple(15, x + .5, y + .5, blue)
-single_ripple(15, 14 + .5, 14 + .5, blue)
-
-while x < 14:
-    last_time = time.time()+4.11
-    if last_time + 4 < time.time():
-        single_ripple(random.randrange(5, 16), x + .5, y + .5, blue)
-        last_time = time.time()
-        x += 2
-        y += 2'''
-
