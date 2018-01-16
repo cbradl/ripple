@@ -39,16 +39,16 @@ class Ripple:
 
     def move_ripple(self):
         blue = .666
-        self.circle(self.radius, self.x, self.y, 1, blue)
-        self.circle(self.radius - 1, self.x, self.y, .5, blue)
-        self.circle(self.radius - 2, self.x, self.y, 0, blue)
+        self.__circle(self.radius, self.x, self.y, 1, blue)
+        self.__circle(self.radius - 1, self.x, self.y, .5, blue)
+        self.__circle(self.radius - 2, self.x, self.y, 0, blue)
         self.radius += 1
 
 
 first = Ripple(2, 2)
 second = Ripple(13, 13)
 
-for i in range(0, 10):
+for i in range(0, 30):
     first.move_ripple()
     second.move_ripple()
     unicornhathd.show()
