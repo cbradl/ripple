@@ -14,17 +14,19 @@ original_pixel_y = center_y
 count = 0
 
 for theta in range(0, 628):
-    pixel_x = center_x+r*math.cos(theta/100)
-    pixel_y = center_y+r*math.sin(theta/100)
+    pixel_x = center_x+(r*math.cos(theta/100))
+    pixel_y = center_y+(r*math.sin(theta/100))
 
     if abs(pixel_x - original_pixel_x) > 1:
+        print(str(original_pixel_x) + ", " + str(original_pixel_y))
         unicornhathd.set_pixel_hsv(original_pixel_x, original_pixel_y, 0, .7,1 )
-        original_pixel_x = int(pixel_x)
+        original_pixel_x = int(round(pixel_x))
         count = 0
 
     elif abs(pixel_y - original_pixel_y) > 1:
+        print(str(original_pixel_x) + ", " + str(original_pixel_y))
         unicornhathd.set_pixel_hsv(original_pixel_x, original_pixel_y, 0, .7, 1)
-        original_pixel_y = int(pixel_y)
+        original_pixel_y = int(round(pixel_y))
         count = 0
 
     count += 1
