@@ -46,9 +46,9 @@ def single_ripple(radius, x, y, color):
 
 blue = .666
 
-single_ripple_circle(8, 7.5, 7.5, blue)
-single_ripple_circle(5, 3.5, 3.5, blue)
-single_ripple_circle(15, 12.5, 3.5, blue)
+single_ripple(8, 7.5, 7.5, blue)
+single_ripple(5, 3.5, 3.5, blue)
+single_ripple(15, 12.5, 3.5, blue)
 
 
 #oooop
